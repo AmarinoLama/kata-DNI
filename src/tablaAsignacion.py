@@ -27,8 +27,23 @@ class tablaAsignacion:
             "E",
         ]
         
-    def getListaLetra(self):
+    def getTabla(self):
         return self.tabla
+
+    def getLetter(self,posicion):
+        try:
+            return self.getTabla()[posicion]
+        except IndexError:
+            return "La posición de la letra está fuera del índice."
     
-    def getNumLetras(self):
-        return len(self.tabla)
+    def getLength(self):
+        return len(self.getTabla())
+    
+    def getPosition(self,DNI):
+        return int(DNI) % self.getLength()
+    
+    def calculateLetter(self,DNI):
+        return self.getLetter(self.getPosition(DNI))
+
+    def __repr__(self) -> str:
+        return str(self.getTabla())
